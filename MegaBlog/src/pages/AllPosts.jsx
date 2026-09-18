@@ -32,11 +32,11 @@ function AllPosts(props) {
         <div className="w-full py-8">
             <Container>
                 <div className="flex flex-wrap">
-                    {posts.map((post) => {
+                    {posts.map((post) => 
                         <div key={post.$id}>                        
-                            <PostCard post={post}></PostCard>
+                            <PostCard {...post}></PostCard>
                         </div>
-                    })}
+                    )}
                 </div>
             </Container>
         </div>

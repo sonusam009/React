@@ -11,7 +11,7 @@ export class Service {
         this.bucket = new Storage(this.client);
     }
 
-    async cretePost({title, slug, content, featuredImage, status, userId}){
+    async createPost({title, slug, content, featuredImage, status, userId}){
         try{
             return await this.databases.createDocument(
                 conf.appwriteDatabaseId,
@@ -121,10 +121,10 @@ export class Service {
 
     getFilePreview(fileId){
         try {
-            return this.bucket.getFilePreview(
-                conf.appwriteBucketId,
+            return this.bucket.getFileView({
+                bucketId: conf.appwriteBucketId,
                 fileId
-            )
+        })
         }
         catch(error) {
             throw error;

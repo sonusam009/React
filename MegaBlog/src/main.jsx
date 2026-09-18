@@ -5,7 +5,7 @@ import App from './App.jsx'
 import { Provider } from 'react-redux'
 import store from './store/sore.js'
 import { createBrowserRouter, RouterProvider } from 'react-router'
-import { Home, Login, Signup, AddPost, AllPosts, EditPost } from './pages/index.js'
+import { Home, Login, Signup, AddPost, AllPosts, EditPost, Post } from './pages/index.js'
 import { AuthLayout } from './components/index.js'
 
 const router = createBrowserRouter([
@@ -50,13 +50,17 @@ const router = createBrowserRouter([
         )
       },
       {
-        path: "/edit-post",
+        path: "/edit-post/:slug",
         element: (
           <AuthLayout authentication={true}>
             <EditPost></EditPost>
           </AuthLayout>
         )
-      }
+      },
+       {
+            path: "/post/:slug",
+            element: <Post />,
+        },
     ]
   }
 ])
