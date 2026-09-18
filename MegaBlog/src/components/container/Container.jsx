@@ -1,4 +1,4 @@
-function Container(props) {
+function Container({children}) {
     
 
     return (

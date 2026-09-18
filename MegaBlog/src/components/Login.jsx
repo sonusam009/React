@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router";
-import { login } from "../store/authSlice";
+import { login as authLogin} from "../store/authSlice";
 import { Button, Input, Logo } from "./index";
 import { useDispatch } from "react-redux";
 import authService from "../appwrite/auth";
@@ -19,7 +19,7 @@ function Login(props) {
             if(session) {
                 const userData = await authService.getCurrentUser();
                 if(userData) {
-                    dispatch(login(userData));
+                    dispatch(authLogin(userData));
                     navigate("/");
                 }
             }
@@ -37,7 +37,6 @@ function Login(props) {
                         <Logo width="100%"></Logo>
                     </span>
                 </div>
-            </div>
             <h2 className="text-center text-2xl font-bold leading-tight">
                 Sign in to your account
             </h2>
@@ -77,10 +76,11 @@ function Login(props) {
                     ></Input>
                     <Button
                         children="Sign In"
-                        type="button"
+                        type="submit"
                     ></Button>
                 </div>
             </form>
+            </div>
         </div>
     );
 }
